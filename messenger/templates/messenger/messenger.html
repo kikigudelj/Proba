@@ -1,0 +1,43 @@
+{% extends 'transit/base.html' %}
+{% block content %}
+<div class="messenger">
+    <div style="flex: 2;">
+        <h3>Conversations:</h3>
+        <div>
+            {% for conversation in my_conversations %}
+                <a href="{% url 'messenger:messages_from_conversations' user_id=conversation.id %}">
+                    <h4>{{ conversation.username }}</h4>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="flex: 6;">
+    {% if other_user %}
+        <h4>Conversation with {{ other_user.username }}</h4>
+        <div class="messages">
+            {% for message in all_messages reversed %}
+            {% if message.m_sender == request.user %}
+                <div class="message1" style="background-color: rgb(47, 45, 45); color: white;">{% else %}
+                <div class="message2" style="background-color:blue; color: white;">{% endif %}
+                {% if message.m_sender == request.user %}
+                    <p><strong>You: </strong>{{ message.text }}</p>
+                {% else %}
+                    <p>{{ message.m_sender.username }}: {{ message.text }}</p>
+                {% endif %}
+                <small><b>{{ message.sent_at }}</b></small>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    </div>
+    <div>
+    <h1>Send New Message:</h1>
+    <form class="site-form" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Send">
+     </form>
+    </div>
+</div>
+{% endblock %}

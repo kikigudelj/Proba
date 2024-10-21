@@ -1,0 +1,21 @@
+{% extends 'transit/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+ <h1>Hello {{user.username}}!</h1>
+ <p>Email: {{user.email}}</p>
+ <a href="{% url 'messenger:messages_from_conversations' user_id=user.id %}"><p>Messenger</p></a>
+ <div class="notifications">
+    <h2>NOTIFICATIONS:</h2>
+    {% for notification in notifications %}
+    <div class="notification">
+        <h3>{{notification.title}}</h3>
+        <p>{{notification.text}}</p>
+        <h5>Sent by:{{notification.sender.username}} at {{notification.sent_at}}</h5>
+    </div>
+    {% endfor %}
+ </div>
+
+{% endblock %}

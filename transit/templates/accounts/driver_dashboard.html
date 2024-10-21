@@ -1,0 +1,48 @@
+{% extends 'transit/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+ <h1>Hello {{user.username}}</h1>
+ <p>Email: {{user.email}}</p>
+ <div class="card-container">
+ <div class="drives">
+ <h2>Upcoming drives:</h2>
+ {% for drive in drives %}
+    <div class="drive-card">
+        <h3>{{drive.title}}</h3>
+        <p>Available number of seats:{{drive.number_of_seats}}</p>
+        <p>{{drive.price}} euros</p>
+        <img style="width: 300px; height: 120px; object-fit:cover" src="{{ drive.image.url }}"  >
+        <h5>{{drive.pub_date}}</h5>
+        <p><b>Status:</b> {% if drive.status == "Active" %}Active{% else %}Finished {% endif %}</p>
+        <form action="{% url 'set_status' drive.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Change Status</button>
+        </form>
+    </div>
+{% endfor %}
+</div>
+<div class="drives">
+ <h2>Applications for drives:</h2>
+ {% for application in applications_for_my_drives %}
+  {% if application.accepted %}
+  <div class="application-card" style="background-color: green;">{% else %}
+    <div class="application-card" style="background-color: red;">{% endif %};"
+     <h3>{{ application.drive.title }}</h3>
+     <p><b>Seats:</b> {{ application.seats }}</p>
+     <p><b>Requested by:</b> {{ application.user.username }}</p>
+     <p><b>Status:</b> {% if application.accepted %}Accepted{% else %}Pending{% endif %}</p>
+     {% if not application.accepted %}
+         <form action="{% url 'accept_drive_and_change_seats' application.id %}" method="post">
+             {% csrf_token %}
+             <button type="submit">Accept Drive</button>
+         </form>
+     {% endif %}
+    </div>
+ {% endfor %}
+</div>
+</div>
+ <a href="">Arhiva prošlih vožnji</a>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'transit/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+<div class="card-container2" style="margin-top: 20px;">
+    <form method="get" action="{% url 'list_of_drives' %}">
+        <label for="sort">Sortiraj po cijeni:</label>
+        <select id="sort" name="sort" onchange="this.form.submit()">
+            <option value="default" {% if sort_option == 'default' %}selected{% endif %}>Default</option>
+            <option value="high_to_low" {% if sort_option == 'high_to_low' %}selected{% endif %}>High to Low</option>
+            <option value="low_to_high" {% if sort_option == 'low_to_high' %}selected{% endif %}>Low to High</option>
+        </select>
+    </form>
+<div class="card-container">
+    <div card="drives">
+        {% for drive in drives%}
+            {% if drive.status == "Active" %}
+                <a href="{% url 'detail' drive.id %}" style="text-decoration: none; color: black;">
+                    <div class="drive-card">
+                        <h2>{{drive.title}}</h2>
+                        <p>Price: {{drive.price}} euros</p>
+                        <img style="width: 300px; height: 200px; object-fit:cover" src="{{ drive.image.url }}"  >
+                        <h5>{{drive.pub_date}}</h5>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

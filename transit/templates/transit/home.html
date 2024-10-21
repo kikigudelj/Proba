@@ -1,0 +1,9 @@
+{% extends 'transit/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+<h2 style="text-align: center;">Hello traveller {{ user.account.name }}, welcome to the best travel site: <br> <span style="font-size: 45px;">TransitConnect!</span> </h1>
+<img style="width: 100%; object-fit:cover" class="background-photo" src="{% static 'media/home_picture.jpg' %}" alt="">
+{% endblock %}

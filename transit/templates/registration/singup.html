@@ -1,0 +1,14 @@
+{% extends 'transit/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+ <h1>Singup</h1>
+ <form class="site-form" method="post">
+    {% csrf_token %}
+    {{ form1 }}
+    {{ form2 }}
+    <input type="submit" value="Singup">
+ </form>
+{% endblock %}

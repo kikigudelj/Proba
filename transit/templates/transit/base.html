@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css\styles.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div class="login">
+        {% if user.is_authenticated %}
+            <div class="profile-details">
+            <ul>
+                <li><a href="{% url 'profile' %}"> {{user.username }}|</a></li>
+                {% if user.account.driver == True %}
+                <li><a href="{% url 'driver_dashboard' %}">Dashboard|</a></li> 
+                {% else %}
+                <li><a href="{% url 'user_dashboard' %}"> Dashboard|</a></li>
+                {% endif %}
+                <li><a href="{% url 'logout' %}">Odjava</a></li>
+            </ul>
+            </div>
+        {% else %}
+            <div class="profile-details">
+            <ul>
+                <li><a href="{% url 'login' %}">login</a></li>
+                <li><a href="{% url 'singup' %}">register</a></li>
+            </ul>
+            </div>
+        {% endif %}
+    </div>
+    <nav>
+        <ul>
+        <li><a href="{% url 'home' %}"><p>Home</p></a></li> 
+        <li><a href="{% url 'list_of_drives' %}"><p>List Of Drives</p></a></li>
+        {% if user.is_authenticated %}
+            {% if user.account.driver == True %}
+                <li><a href="{% url 'new_drive' %}"><p>Publish New Drive</p></a></li>
+            {% endif %}
+        {% endif %}
+    </nav>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

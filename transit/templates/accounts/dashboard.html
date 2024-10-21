@@ -1,0 +1,22 @@
+{% extends 'transit/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+<center>
+ <h1>Your Dashboard!</h1>
+ <h2>Upcoming drives:</h2>
+ {% for application in my_applications %}
+    {% if application.accepted %}
+    <div style="border: 2px solid black; background-color: yellowgreen;; padding: 5px; width: 50%; border-radius: 20px; margin: 3px; font-size: 24px;">
+        <p><b>{{application.drive.title}}</b></p>
+        <p><b>Number of seats: </b>{{application.seats}}</p>
+        <p><small><b>{{application.drive.date}}</b></small></p>
+    </div>   
+    {% endif %}
+ {% endfor %}
+
+<h2>Sent requests:</h2>
+</center>
+{% endblock %}

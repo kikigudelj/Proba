@@ -1,0 +1,219 @@
+
+ul{
+    list-style-type: none;
+}
+body {
+    margin: 0;
+    padding-bottom: 50px;
+    background-color: bisque;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: orange;
+    padding: 10px;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+div.login {
+    align-items: right;
+    margin-left: 85%;
+}
+div.profile-details {
+    text-align: right;
+}
+
+div.profile-details ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+div.profile-details ul li {
+    margin-right: 20px;
+}
+
+div.profile-details ul li:last-child {
+    margin-right: 0;
+}
+/* DRIVE DETAIL */
+.drive-detail{
+    background-color: bisque;
+    text-align: center;
+    padding: 20px;
+}
+
+/* DRIVER DASHBOARD */
+.card-container {
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;  /* Allows cards to wrap to the next line if the container is not wide enough */
+}
+
+.drive-card{
+    text-align: center;
+    border: solid 2px green;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: yellow;
+    width: 500px;
+    height: 400px;
+    margin-top: 20px;
+}
+
+.drives{
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    background-color: bisque;
+}
+
+.application-card{
+    width: 350px;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+input[type="submit"],
+.drive-card button {
+    width: 100%;
+    padding: 3px;
+}
+/* DRIVE FORM */
+/* Opći stil za input i file polja */
+.orange-input,
+.grey-input,
+.new-drive button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Dodano kako bi padding i border utjecali na ukupnu širinu elementa */
+}
+
+.orange-input {
+    border: 1px solid orange;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 200, 100);
+    color: black;
+}
+
+.orange-input::placeholder {
+    color: black;
+}
+
+.grey-input {
+    border: 1px solid #808080;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #808080;
+    color: white;
+}
+
+.new-drive button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; 
+}
+
+label {
+    font-weight: bold;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(220, 217, 217);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* NOTFIFICATIONS */
+
+.notification{
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 7px;
+    margin: 5px;
+    background-color: yellow;
+}
+
+/* MESSENGER */
+.messenger{
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+}
+.messages{
+    border: 2px solid black;
+    width: 600px;
+    padding: 25px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.message1 {
+    padding: 5px;
+    border-radius: 20px;
+    width: 350px;
+    align-items: right;
+    align-self: flex-end;
+    margin-top: 5px;
+}
+
+.message2 {
+    padding: 5px;
+    border-radius: 20px;
+    width: 350px;
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+/* REGISTRATION FORM */
+.form-control {
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

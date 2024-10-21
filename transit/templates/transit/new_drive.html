@@ -1,0 +1,15 @@
+{% extends 'transit/base.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+<div class="new-drive">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <br><br>
+        <input type="submit" value="Publish">
+    </form>
+</div>
+{% endblock %}
